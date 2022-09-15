@@ -1,0 +1,52 @@
+name: $(BuildNumber)
+
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  name: 'vmss_agent_pool'
+
+steps:
+
+- pwsh: |
+    $package_json_file_path = "$(Build.sourcesdirectory)\package.json"
+    $package_json_file_content = Get-Content $package_json_file_path | ConvertFrom-Json
+    $coralX_version = $package_json_file_content.version
+    $build_id = $Env:BUILD_ID
+    echo "##vso[build.updatebuildnumber]$coralX_version-rc-$($build_id)"
+  env:
+    BUILD_ID: $(Build.BuildID)  
+  displayName: 'Update Build Number'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+    checkLatest: true
+  displayName: 'Install Node.js'
+
+- pwsh: |
+    $package_json_file_path = "$(Build.sourcesdirectory)\package.json"
+    $package_json_file_content = Get-Content $package_json_file_path | ConvertFrom-Json
+    $coralX_version = $package_json_file_content.version
+    $build_id = $Env:BUILD_ID
+    npm --no-git-tag-version version "$coralX_version-rc-$build_id"
+  env:
+    BUILD_ID: $(Build.BuildID)  
+  displayName: 'Update Coral-X package version before build and publish'  
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: 'd44b9cd5-6020-4baf-85c9-1c708a96d03c/4696996e-c602-4966-8459-e7e903c6cfdd'
+  displayName: 'npm publish'
