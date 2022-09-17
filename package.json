@@ -1,7 +1,7 @@
 {
-  "name": "coral-x",
+  "name": "coral-x-fe",
   "version": "0.1.0",
-  "description": "",
+  "description": "A simple tool for Solidity smart contracts deployment and testing",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
