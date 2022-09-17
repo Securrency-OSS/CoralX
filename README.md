@@ -33,10 +33,17 @@
 
 A simple tool for Solidity smart contracts deployment and testing that provides next capabilities:
 
-* Built-in smart contract compilation (Module from the [Truffle](https://github.com/trufflesuite/truffle)).
-* Automated contract testing with Mocha and Chai.
-* Scriptable framework for the smart contracts deployment and configuration.
-* Network management for deploying to many public & private networks.
+- [x] Built-in smart contract compilation (Module from the [Truffle](https://github.com/trufflesuite/truffle)).
+- [x] Automated contract testing with Mocha and Chai.
+- [x] Scriptable framework for the smart contracts deployment and configuration.
+- [x] Network management for deploying to many public & private networks.
+
+CoralX features plan:
+- [ ] Init script
+- [ ] Console log from Solidity code
+- [ ] Bundled local development blockchain server
+- [ ] Multiple compiler versions support
+- [ ] ... any good ideas are welcomed!
 
 CoralX is designed to be used for the development of big projects.
 It was tested on a project with 400+ smart contracts and long setup scripts.
