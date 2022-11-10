@@ -14,7 +14,7 @@
     - [coralX-config.js](#coralx-configjs)
     - [coralX-scenarios.js](#coralx-scenariosjs)
     - [Compilation](#compilation)
-    - [Scenario file sctructures](#scenario-file-sctructures)
+    - [Scenario file structures](#scenario-file-structures)
     - [Tests](#tests)
   - [Contributing](#contributing)
   - [Advanced Usage](#advanced-usage)
@@ -43,7 +43,7 @@ CoralX features plan:
 - [ ] Console log from Solidity code
 - [ ] Bundled local development blockchain server
 - [ ] Multiple compiler versions support
-- [ ] ... any good ideas are welcomed!
+- [ ] ... any good ideas are welcome!
 
 CoralX is designed to be used for the development of big projects.
 It was tested on a project with 400+ smart contracts and long setup scripts.
@@ -189,7 +189,7 @@ Run:
 $ coralX compile
 ```
 
-### Scenario file sctructures
+### Scenario file structures
 
 Example of smart contract deployment (used proxy patterned smart contracts where Implementation address is constructor argument for Proxy smart contract: `constructor(address implementation`)):
 
@@ -295,7 +295,7 @@ $ coralX execute --path scripts/migrations
 + `--params`: a custom input parameters for the scripts
 ```
 // --params issuer=0xA3E48...7bA4a,issuerPropertyId=0x1bea5a...a8de
-// you can access this parameters in the script via `params`
+// you can access these parameters in the script via `params`
 // params = {issuer: 0xA3E48...7bA4a, issuerPropertyId: 0x1bea5a...a8de}
 
 // in the script
@@ -312,7 +312,7 @@ $ coralX execute --path scripts/custom/add-system-role.js --params issuer=0xA3E4
 Example:
 $ coralX execute --path scripts/migrations --network gorli
 ```
-+ `--output`: if script returns something it will be saved into the apropriate
++ `--output`: if script returns something it will be saved into the appropriate
 file in the build/custom-scripts-output folder
 ```
 Example:
@@ -326,7 +326,7 @@ Executes scenario from the coralX-config.js file.
 
 Supports next options:
 
-+ `--run`: specifies scenarion that will be executed
++ `--run`: specifies scenario that will be executed
 ```
 Scenario example:
 deployGorli: [
