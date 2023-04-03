@@ -1,6 +1,6 @@
 {
   "name": "coral-x-fe",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A simple tool for Solidity smart contracts deployment and testing",
   "main": "index.js",
   "preferGlobal": true,
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
-    "postinstall": "node post-install"
+    "postinstall": "node post-install",
+    "prepublishOnly": "npm run build"
   },
   "author": "Securrency Inc.",
   "license": "MIT",
