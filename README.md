@@ -294,7 +294,7 @@ $ coralX execute --path scripts/migrations
 ```
 + `--params`: a custom input parameters for the scripts
 ```
-// --params issuer=0xA3E48...7bA4a,issuerPropertyId=0x1bea5a...a8de
+// --params issuer=0xA3E48...7bA4a:issuerPropertyId=0x1bea5a...a8de
 // you can access this parameters in the script via `params`
 // params = {issuer: 0xA3E48...7bA4a, issuerPropertyId: 0x1bea5a...a8de}
 
@@ -302,7 +302,7 @@ $ coralX execute --path scripts/migrations
 module.exports = async (_, params) => {};
 
 Example:
-$ coralX execute --path scripts/custom/add-system-role.js --params issuer=0xA3E48...7bA4a,issuerPropertyId=0x1bea5a...a8de
+$ coralX execute --path scripts/custom/add-system-role.js --params issuer=0xA3E48...7bA4a:issuerPropertyId=0x1bea5a...a8de
 ```
 + `--network`: a target network specification (by default localhost)
 ```
