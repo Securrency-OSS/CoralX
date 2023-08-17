@@ -76,7 +76,7 @@ const RequireWrapper = {
                         try {
                             return dynamicRequire(path.join(moduleDir, 'node_modules', pkgPath));
                         } catch (e) {
-                            console.log('require catch');
+                            // Ignore.
                         }
                         const oldModuleDir = moduleDir;
                         moduleDir = path.join(moduleDir, '..');

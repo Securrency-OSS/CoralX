@@ -1,6 +1,6 @@
 {
   "name": "coral-x-fe",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A simple tool for Solidity smart contracts deployment and testing",
   "main": "index.js",
   "preferGlobal": true,
@@ -10,32 +10,30 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
-    "postinstall": "node post-install"
+    "postinstall": "node post-install",
+    "prepublishOnly": "npm run build"
   },
   "author": "Securrency Inc.",
   "license": "MIT",
   "dependencies": {
-    "@truffle/workflow-compile": "^3.2.6",
-    "chai": "^4.3.4",
-    "crypto": "^1.0.1",
+    "@truffle/workflow-compile": "3.2.48",
+    "chai": "4.3.7",
+    "crypto": "1.0.1",
     "ethersfathom": "0.4.0",
-    "glob": "^7.2.0",
-    "mocha": "^9.1.3",
-    "node-fetch": "^2.6.1",
-    "rimraf": "^3.0.2",
+    "glob": "7.2.3",
+    "mocha": "9.2.2",
+    "node-fetch": "2.6.9",
+    "rimraf": "3.0.2",
     "solc": "0.8.10",
-    "spawn-promise": "^0.1.8",
-    "web3": "^1.6.1",
-    "web3-utils": "^1.6.1",
-    "whiskers": "^0.4.0"
+    "spawn-promise": "0.1.8",
+    "web3": "1.9.0",
+    "web3-utils": "1.9.0",
+    "whiskers": "0.4.0"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^7.0.0",
-    "webpack": "^5.10.0",
-    "webpack-cli": "^4.7.2"
-  },
-  "overrides": {
-    "@truffle/events": "0.1.6"
+    "clean-webpack-plugin": "3.0.0",
+    "copy-webpack-plugin": "7.0.0",
+    "webpack": "5.77.0",
+    "webpack-cli": "4.10.0"
   }
 }
