@@ -31,12 +31,13 @@ class RulesSetsGenerator {
     /**
      * Generates solidity code for the provided list of rules sets
      */
-    async render() {
+    async render(renderFrontend = false) {
         for (let i = 0; i < this.rulesSets.length; i++) {
             this.templates.push(
                 await this.generateRulesSet(
                     this.rulesSets[i].internalOperations.compareOperations,
-                    this.rulesSets[i].rulesSetError
+                    this.rulesSets[i].rulesSetError,
+                    renderFrontend
                 )
             );
             this.rulesSetsCount++;
@@ -77,14 +78,14 @@ class RulesSetsGenerator {
      * @param {array} conditions List of the conditions that preset in the rules set. Example: (KYC == true && inBlackList == false)
      * @param {string} error Rules set error message from the policy (can be empty) 
      */
-    async generateRulesSet(conditions, error) {
+    async generateRulesSet(conditions, error, renderFrontend = false) {
         let templates = [];
         let count = conditions.operations.length;
         
         // render conditions functions
         for (let i = 0; i < count; i++) {
             templates.push(
-                await this.conditionsGenerator.render(conditions.operations[i])
+                await this.conditionsGenerator.render(conditions.operations[i], renderFrontend)
             );
             this.compareOperationsCount++;
         }
