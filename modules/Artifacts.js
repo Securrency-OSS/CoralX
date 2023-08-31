@@ -39,15 +39,15 @@ const Artifacts = {
         const currentArtifact = {...Artifact, fileName};
         return currentArtifact.getAddressFromABI();
     },
-    async initializeInterfaceAt(interface, contract) {
-        if (path.extname(interface) !== '.sol') interface += '.sol';
+    async initializeInterfaceAt(interfaceName, contract) {
+        if (path.extname(interfaceName) !== '.sol') interfaceName += '.sol';
         
         let contractAddress = contract;
         if (!web3.utils.isAddress(contract)) {
             if (path.extname(contract) !== '.sol') contract += '.sol';
             contractAddress = (this.require(contract)).address;
         }
-        const interfaceInstance = this.require(interface);
+        const interfaceInstance = this.require(interfaceName);
 
         return await interfaceInstance.at(contractAddress);
     }
