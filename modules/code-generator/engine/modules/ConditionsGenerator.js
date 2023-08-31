@@ -63,8 +63,13 @@ class ConditionsGenerator {
      * Generates soldity code for the particular compare oparation. Example: (KYC == true)
      * @param {object} operation Compare operation details
      */
-    async render(operation) {
-        const propertyDataType = await this.getPropertyDataType(operation.property);
+    async render(operation, renderFrontend = false) {
+        let propertyDataType;
+        if (renderFrontend) {
+          propertyDataType = operation.type
+        } else {
+          propertyDataType = await this.getPropertyDataType(operation.property);
+        }
         const compareOperationsCount = this.compareOperationsCount;
         let valueToCompareTpl = await this.compareOpVCompareGeneration(
             propertyDataType,
