@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const nativeStrategyPath = 'node_modules/@truffle/compile-solidity/dist/compilerSupplier/loadingStrategies/Native.js';
+const nativeStrategyPath = `${__dirname}/node_modules/@truffle/compile-solidity/dist/compilerSupplier/loadingStrategies/Native.js`;
 
 const maxBuffer = '1024 * 1024 * 50';
 const maxBufferRequired = '1024 * 1024 * 1024';
