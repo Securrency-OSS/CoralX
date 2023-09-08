@@ -13,9 +13,13 @@ contract {contractName} is IERC165, IPolicy {
     // Define libraries
     using ComparisonOperations for *;
     // Compliance oracle address
-    address internal _complianceOracle = {complianceOracleAddress};
+    address internal _complianceOracle;
     // session -> condition number -> is verified
     mapping(bytes32 => mapping(uint => PolicyResult)) internal _conditionsVerified;
+
+    constructor(address complianceOracle) {
+        _complianceOracle = complianceOracle;
+    }
     
     {supportsInterfaceFn}
     {getExternalCallsTotalFn}

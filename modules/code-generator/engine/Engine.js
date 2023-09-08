@@ -36,15 +36,12 @@ class Engine {
    * Render a main template
    */
   async render() {
-    const ComplianceOracle = artifacts.require("./registry-layer/compliance-oracle/ComplianceOracle.sol");
-
     return whiskers.render(template, {
       verifyFnBody: await this.rulesSetsGenerator.render(),
       internalFunctions: this.rulesSetsGenerator.renderInternalFunctionsList(),
       library: library,
       solidityVersion: this.solidityVersion,
       contractName: "PermissionsVerification",
-      complianceOracleAddress: ComplianceOracle.address,
       interfaces: whiskers.render(interfaces),
       structs: whiskers.render(structs),
       getExternalCallsTotalFn: getExternalCallsTotalFn.render(),
@@ -52,14 +49,13 @@ class Engine {
     });
   }
 
-  async renderFrontend( complianceOracleAddress ) {
+  async renderFrontend() {
     return whiskers.render(template, {
       verifyFnBody: await this.rulesSetsGenerator.render(true),
       internalFunctions: this.rulesSetsGenerator.renderInternalFunctionsList(),
       library: library,
       solidityVersion: this.solidityVersion,
       contractName: "PermissionsVerification",
-      complianceOracleAddress: complianceOracleAddress,
       interfaces: whiskers.render(interfaces),
       structs: whiskers.render(structs),
       getExternalCallsTotalFn: getExternalCallsTotalFn.render(),
