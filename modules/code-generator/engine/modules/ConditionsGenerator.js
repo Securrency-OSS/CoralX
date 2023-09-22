@@ -106,11 +106,16 @@ class ConditionsGenerator {
                     compareTemplates.compareOperationValueToCompare1Bytes(),
                     {valueToCompare: value, i: i}
                 );
-            case this.supportedDataType.uint || this.supportedDataType.int || this.supportedDataType.bytes32:
+            break;
+            case this.supportedDataType.uint:
+            case this.supportedDataType.int:
+            case this.supportedDataType.bytes32:
+            case this.supportedDataType.string:
                 return whiskers.render(
                     compareTemplates.compareOperationValueToCompare32Bytes(),
                     {valueToCompare: valueToCompare, i: i}
                 );
+            break;
             default:
                 throw new Error(`Unsupported data type: "${dataType}"`);
         }
